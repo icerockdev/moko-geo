@@ -22,12 +22,13 @@ import platform.CoreLocation.kCLLocationAccuracyBest
 import platform.Foundation.NSError
 import platform.Foundation.NSLog
 import platform.darwin.NSObject
+import kotlin.native.ref.WeakReference
 
 actual class LocationTracker(
     actual val permissionsController: PermissionsController,
     accuracy: CLLocationAccuracy = kCLLocationAccuracyBest
 ) {
-    private val tracker = Tracker()
+    private val tracker = Tracker(this)
     private val locationManager = CLLocationManager().apply {
         delegate = tracker
         desiredAccuracy = accuracy
@@ -60,9 +61,16 @@ actual class LocationTracker(
         }
     }
 
-    inner class Tracker: NSObject(), CLLocationManagerDelegateProtocol {
+    private class Tracker(
+        locationTracker: LocationTracker
+    ) : NSObject(), CLLocationManagerDelegateProtocol {
+        private val locationTracker = WeakReference(locationTracker)
+
         override fun locationManager(manager: CLLocationManager, didUpdateLocations: List<*>) {
             val locations = didUpdateLocations as List<CLLocation>
+            val locationTracker = locationTracker.get() ?: return
+            val trackerScope = locationTracker.trackerScope
+            val locationsChannel = locationTracker.locationsChannel
 
             locations.forEach { location ->
                 val latLng = location.coordinate().useContents {
