@@ -17,7 +17,7 @@ object Versions {
 
         object MultiPlatform {
             const val coroutines = "1.3.3"
-            const val mokoGeo = "0.1.0"
+            const val mokoGeo = "0.1.1"
             const val mokoParcelize = "0.2.0"
             const val mokoPermissions = "0.3.0"
             const val mokoMvvm = "0.4.0"
