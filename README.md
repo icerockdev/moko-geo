@@ -16,7 +16,7 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 - [License](#license)
 
 ## Features
-- **** - ;
+- **Geolocation tracking** - track user geolocation from common code;
 
 ## Requirements
 - Gradle version 5.4.1+
@@ -26,6 +26,7 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 ## Versions
 - kotlin 1.3.61
   - 0.1.0
+  - 0.1.1
 
 ## Installation
 root build.gradle  
@@ -40,7 +41,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:geo:0.1.0")
+    commonMainApi("dev.icerock.moko:geo:0.1.1")
 }
 ```
 
@@ -50,7 +51,51 @@ enableFeaturePreview("GRADLE_METADATA")
 ```
 
 ## Usage
-TODO
+in common code:
+```kotlin
+class TrackerViewModel(
+    val locationTracker: LocationTracker
+) : ViewModel() {
+
+    init {
+        viewModelScope.launch {
+            locationTracker.getLocationsFlow()
+                .distinctUntilChanged()
+                .collect { println("new location: $it") }
+        }
+    }
+
+    fun onStartPressed() {
+        viewModelScope.launch { locationTracker.startTracking() }
+    }
+
+    fun onStopPressed() {
+        locationTracker.stopTracking()
+    }
+}
+```
+
+In Android:
+```kotlin
+// create ViewModel
+val locationTracker = LocationTracker(
+    permissionsController = PermissionsController(applicationContext = applicationContext)
+)
+val viewModel = TrackerViewModel(locationTracker)
+
+// bind tracker to lifecycle
+viewModel.locationTracker.bind(lifecycle, this, supportFragmentManager)
+```
+
+In iOS:
+```swift
+let viewModel = TrackerViewModel(
+    locationTracker: LocationTracker(
+        permissionsController: PermissionsController(),
+        accuracy: kCLLocationAccuracyBest
+    )
+)
+```
 
 ## Samples
 Please see more examples in the [sample directory](sample).
