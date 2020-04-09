@@ -44,6 +44,7 @@ project build.gradle
 ```groovy
 dependencies {
     commonMainApi("dev.icerock.moko:geo:0.2.0")
+    androidMainImplementation("com.google.android.gms:play-services-location:16.0.0")
 }
 ```
 
