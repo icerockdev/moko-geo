@@ -1,1 +1,0 @@
-./gradlew -PlibraryPublish :geo:publishToMavenLocal $*
