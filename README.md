@@ -1,5 +1,5 @@
 ![moko-mvvm](https://user-images.githubusercontent.com/5010169/71337878-0e0d0f80-2580-11ea-8ac5-69a132334960.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-geo/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-geo/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.3.70-orange)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-geo/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-geo/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.4.0-orange)
 
 # Mobile Kotlin geolocation module
 This is a Kotlin Multiplatform library that provides geolocation to common code.
@@ -11,7 +11,7 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Samples](#samples)
-- [Set Up Locally](#setup-locally)
+- [Set Up Locally](#set-up-locally)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -19,7 +19,7 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 - **Geolocation tracking** - track user geolocation from common code;
 
 ## Requirements
-- Gradle version 5.6.4+
+- Gradle version 6.0+
 - Android API 16+
 - iOS version 9.0+
 
@@ -29,6 +29,8 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
   - 0.1.1
 - kotlin 1.3.70
   - 0.2.0
+- kotlin 1.4.0
+  - 0.3.0
 
 ## Installation
 root build.gradle  
@@ -43,7 +45,8 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:geo:0.2.0")
+    commonMainApi("dev.icerock.moko:geo:0.3.0")
+    androidMainImplementation("com.google.android.gms:play-services-location:17.0.0")
 }
 ```
 
@@ -99,8 +102,7 @@ Please see more examples in the [sample directory](sample).
 
 ## Set Up Locally 
 - The [geo directory](geo) contains the `geo` library;
-- In [sample directory](sample) contains sample apps for Android and iOS; plus the mpp-library connected to the apps;
-- For local testing use the `./publishToMavenLocal.sh` script - so that sample apps use the locally published version.
+- In [sample directory](sample) contains sample apps for Android and iOS; plus the mpp-library connected to the apps.
 
 ## Contributing
 All development (both new features and bug fixes) is performed in the `develop` branch. This way `master` always contains the sources of the most recently released version. Please send PRs with bug fixes to the `develop` branch. Documentation fixes in the markdown files are an exception to this rule. They are updated directly in `master`.
