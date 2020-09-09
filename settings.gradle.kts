@@ -14,14 +14,6 @@ pluginManagement {
     }
 }
 
-enableFeaturePreview("GRADLE_METADATA")
-
-val properties = startParameter.projectProperties
-// ./gradlew -PlibraryPublish :geo:publishToMavenLocal
-val libraryPublish: Boolean = properties.containsKey("libraryPublish")
-
 include(":geo")
-if (!libraryPublish) {
-    include(":sample:android-app")
-    include(":sample:mpp-library")
-}
+include(":sample:android-app")
+include(":sample:mpp-library")
