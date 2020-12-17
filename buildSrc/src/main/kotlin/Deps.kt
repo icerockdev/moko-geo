@@ -1,5 +1,5 @@
 object Deps {
-    private const val kotlinVersion = "1.4.0"
+    private const val kotlinVersion = "1.4.21"
 
     private const val androidAppCompatVersion = "1.1.0"
     private const val materialDesignVersion = "1.0.0"
@@ -9,11 +9,11 @@ object Deps {
 
     private const val detektVersion = "1.7.4"
 
-    private const val coroutinesVersion = "1.3.9"
-    private const val mokoParcelizeVersion = "0.4.0"
+    private const val coroutinesVersion = "1.4.2"
+    private const val mokoParcelizeVersion = "0.5.0"
     private const val mokoPermissionsVersion = "0.6.0"
-    private const val mokoMvvmVersion = "0.8.0"
-    const val mokoGeoVersion = "0.3.0"
+    private const val mokoMvvmVersion = "0.8.1"
+    const val mokoGeoVersion = "0.3.1"
 
     object Android {
         const val compileSdk = 28
@@ -56,11 +56,8 @@ object Deps {
             const val coroutines =
                 "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
             const val mokoParcelize = "dev.icerock.moko:parcelize:$mokoParcelizeVersion"
-            val mokoPermissions = MultiPlatformLibrary(
-                common = "dev.icerock.moko:permissions:$mokoPermissionsVersion",
-                iosX64 = "dev.icerock.moko:permissions-iosx64:$mokoPermissionsVersion",
-                iosArm64 = "dev.icerock.moko:permissions-iosarm64:$mokoPermissionsVersion"
-            )
+            val mokoPermissions = "dev.icerock.moko:permissions:$mokoPermissionsVersion"
+                .defaultMPL(ios = true)
             const val mokoMvvm = "dev.icerock.moko:mvvm:$mokoMvvmVersion"
             const val mokoGeo = "dev.icerock.moko:geo:$mokoGeoVersion"
         }
