@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -249,6 +249,7 @@
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -258,6 +259,7 @@
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
