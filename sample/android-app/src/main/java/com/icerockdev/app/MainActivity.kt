@@ -8,6 +8,8 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.icerockdev.app.databinding.ActivityMainBinding
 import com.icerockdev.library.TrackerViewModel
+import dev.icerock.moko.geo.GPSLifecycleObserver
+import dev.icerock.moko.geo.GPSSensorHelper
 import dev.icerock.moko.geo.LocationTracker
 import dev.icerock.moko.mvvm.MvvmActivity
 import dev.icerock.moko.mvvm.createViewModelFactory
@@ -18,10 +20,18 @@ class MainActivity : MvvmActivity<ActivityMainBinding, TrackerViewModel>() {
     override val viewModelVariableId: Int = BR.viewModel
     override val viewModelClass: Class<TrackerViewModel> = TrackerViewModel::class.java
 
+    lateinit var gpsLifecycleObserver : GPSLifecycleObserver
+
     override fun viewModelFactory(): ViewModelProvider.Factory {
         return createViewModelFactory {
+            gpsLifecycleObserver = GPSLifecycleObserver(activityResultRegistry)
+
             val locationTracker = LocationTracker(
-                permissionsController = PermissionsController(applicationContext = applicationContext)
+                permissionsController = PermissionsController(applicationContext = applicationContext),
+                gpsSensorHelper = GPSSensorHelper(
+                    appContext = applicationContext,
+                    gpsLifecycleObserver = gpsLifecycleObserver
+                )
             )
             TrackerViewModel(locationTracker)
         }
@@ -31,5 +41,7 @@ class MainActivity : MvvmActivity<ActivityMainBinding, TrackerViewModel>() {
         super.onCreate(savedInstanceState)
 
         viewModel.locationTracker.bind(lifecycle, this, supportFragmentManager)
+
+        lifecycle.addObserver(gpsLifecycleObserver)
     }
 }

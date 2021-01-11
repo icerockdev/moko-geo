@@ -46,4 +46,9 @@ dependencies {
     implementation(Deps.Libs.Android.playServicesLocation)
 
     implementation(project(":sample:mpp-library"))
+
+    implementation("androidx.activity:activity-ktx:1.2.0-rc01")
+    implementation("androidx.fragment:fragment:1.3.0-rc01")
+
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.3.0-rc01")
 }
