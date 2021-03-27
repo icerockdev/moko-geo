@@ -14,4 +14,6 @@ expect class LocationTracker {
     fun stopTracking()
 
     fun getLocationsFlow(): Flow<LatLng>
+
+    fun getExtendedLocationsFlow(): Flow<ExtendedLocation>
 }

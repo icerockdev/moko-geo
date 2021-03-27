@@ -5,6 +5,7 @@
 package dev.icerock.moko.geo
 
 import android.content.Context
+import android.os.Build
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
@@ -36,6 +37,7 @@ actual class LocationTracker(
         it.priority = priority
     }
     private val locationsChannel = Channel<LatLng>(Channel.BUFFERED)
+    private val extendedLocationsChannel = Channel<ExtendedLocation>(Channel.BUFFERED)
     private val trackerScope = CoroutineScope(Dispatchers.Main)
 
     fun bind(lifecycle: Lifecycle, context: Context, fragmentManager: FragmentManager) {
@@ -59,11 +61,51 @@ actual class LocationTracker(
     override fun onLocationResult(locationResult: LocationResult) {
         super.onLocationResult(locationResult)
 
+        val lastLocation = locationResult.lastLocation
+
+        val speedAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) .0
+        else lastLocation.speedAccuracyMetersPerSecond.toDouble()
+
+        val bearingAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) .0
+        else lastLocation.bearingAccuracyDegrees.toDouble()
+
+        val verticalAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) .0
+        else lastLocation.verticalAccuracyMeters.toDouble()
+
         val latLng = LatLng(
-            locationResult.lastLocation.latitude,
-            locationResult.lastLocation.longitude
+            lastLocation.latitude,
+            lastLocation.longitude
         )
 
+        val locationPoint = Location(
+            coordinates = latLng,
+            coordinatesAccuracyMeters = lastLocation.accuracy.toDouble()
+        )
+
+        val speed = Speed(
+            lastLocation.speed.toDouble(),
+            speedAccuracy
+        )
+
+        val azimuth = Azimuth(
+            lastLocation.bearing.toDouble(),
+            bearingAccuracy
+        )
+
+        val altitude = Altitude(
+            lastLocation.altitude,
+            verticalAccuracy
+        )
+
+        val extendedLocation = ExtendedLocation(
+            location = locationPoint,
+            azimuth = azimuth,
+            speed = speed,
+            altitude = altitude,
+            timestampMs = lastLocation.time
+        )
+
+        trackerScope.launch { extendedLocationsChannel.send(extendedLocation) }
         trackerScope.launch { locationsChannel.send(latLng) }
     }
 
@@ -87,6 +129,20 @@ actual class LocationTracker(
                 while (isActive) {
                     val latLng = locationsChannel.receive()
                     sendChannel.send(latLng)
+                }
+            }
+
+            awaitClose { job.cancel() }
+        }
+    }
+
+    actual fun getExtendedLocationsFlow(): Flow<ExtendedLocation> {
+        return channelFlow {
+            val sendChannel = channel
+            val job = launch {
+                while (isActive) {
+                    val extendedLocation = extendedLocationsChannel.receive()
+                    sendChannel.send(extendedLocation)
                 }
             }
 

@@ -22,9 +22,11 @@ actual class LocationTracker(
     accuracy: CLLocationAccuracy = kCLLocationAccuracyBest
 ) {
     private val locationsChannel = Channel<LatLng>(Channel.BUFFERED)
+    private val extendedLocationsChannel = Channel<ExtendedLocation>(Channel.BUFFERED)
     private val trackerScope = CoroutineScope(UIDispatcher())
     private val tracker = Tracker(
         locationsChannel = locationsChannel,
+        extendedLocationsChannel = extendedLocationsChannel,
         scope = trackerScope
     )
     private val locationManager = CLLocationManager().apply {
@@ -50,6 +52,20 @@ actual class LocationTracker(
                 while (isActive) {
                     val latLng = locationsChannel.receive()
                     sendChannel.send(latLng)
+                }
+            }
+
+            awaitClose { job.cancel() }
+        }
+    }
+
+    actual fun getExtendedLocationsFlow(): Flow<ExtendedLocation> {
+        return channelFlow {
+            val sendChannel = channel
+            val job = launch {
+                while (isActive) {
+                    val extendedLocation = extendedLocationsChannel.receive()
+                    sendChannel.send(extendedLocation)
                 }
             }
 

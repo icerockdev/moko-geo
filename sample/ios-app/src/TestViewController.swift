@@ -7,8 +7,9 @@ import MultiPlatformLibrary
 import CoreLocation
 
 class TestViewController: UIViewController {
-    @IBOutlet var textLabel: UILabel!
-    
+    @IBOutlet var textLocationLabel: UILabel!
+    @IBOutlet var textExtendedLocationLabel: UILabel!
+
     private var viewModel: TrackerViewModel!
     
     override func viewDidLoad() {
@@ -21,8 +22,12 @@ class TestViewController: UIViewController {
             )
         )
         
-        viewModel.text.addObserver { [weak self] text in
-            self?.textLabel.text = text as String?
+        viewModel.textLocation.addObserver { [weak self] text in
+            self?.textLocationLabel.text = text as String?
+        }
+        
+        viewModel.textExtendedLocation.addObserver { [weak self] text in
+            self?.textExtendedLocationLabel.text = text as String?
         }
     }
     
