@@ -63,13 +63,13 @@ actual class LocationTracker(
 
         val lastLocation = locationResult.lastLocation
 
-        val speedAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) .0
+        val speedAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) null
         else lastLocation.speedAccuracyMetersPerSecond.toDouble()
 
-        val bearingAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) .0
+        val bearingAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) null
         else lastLocation.bearingAccuracyDegrees.toDouble()
 
-        val verticalAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) .0
+        val verticalAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) null
         else lastLocation.verticalAccuracyMeters.toDouble()
 
         val latLng = LatLng(
@@ -83,18 +83,18 @@ actual class LocationTracker(
         )
 
         val speed = Speed(
-            lastLocation.speed.toDouble(),
-            speedAccuracy
+            speedMps = lastLocation.speed.toDouble(),
+            speedAccuracyMps = speedAccuracy
         )
 
         val azimuth = Azimuth(
-            lastLocation.bearing.toDouble(),
-            bearingAccuracy
+            azimuthDegrees = lastLocation.bearing.toDouble(),
+            azimuthAccuracyDegrees = bearingAccuracy
         )
 
         val altitude = Altitude(
-            lastLocation.altitude,
-            verticalAccuracy
+            altitudeMeters = lastLocation.altitude,
+            altitudeAccuracyMeters = verticalAccuracy
         )
 
         val extendedLocation = ExtendedLocation(
@@ -105,8 +105,10 @@ actual class LocationTracker(
             timestampMs = lastLocation.time
         )
 
-        trackerScope.launch { extendedLocationsChannel.send(extendedLocation) }
-        trackerScope.launch { locationsChannel.send(latLng) }
+        trackerScope.launch {
+            extendedLocationsChannel.send(extendedLocation)
+            locationsChannel.send(latLng)
+        }
     }
 
     actual suspend fun startTracking() {

@@ -34,7 +34,7 @@ internal actual class Tracker actual constructor(
         val extendedLocationsChannel = extendedLocationsChannel.get() ?: return
 
         locations.forEach { location ->
-            val courseAccuracy = if (UIDevice.currentDevice.systemVersion.compareTo("13.4") < 0) .0
+            val courseAccuracy = if (UIDevice.currentDevice.systemVersion.compareTo("13.4") < 0) null
             else location.courseAccuracy
 
             val latLng = location.coordinate().useContents {
@@ -72,8 +72,10 @@ internal actual class Tracker actual constructor(
                 timestampMs = location.timestamp.timeIntervalSince1970.toLong() * 1000
             )
 
-            trackerScope.launch { extendedLocationsChannel.send(extendedLocation) }
-            trackerScope.launch { locationsChannel.send(latLng) }
+            trackerScope.launch {
+                extendedLocationsChannel.send(extendedLocation)
+                locationsChannel.send(latLng)
+            }
         }
     }
 
