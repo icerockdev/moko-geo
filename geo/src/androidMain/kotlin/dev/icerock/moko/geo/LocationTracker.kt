@@ -27,6 +27,7 @@ import kotlinx.coroutines.launch
 
 actual class LocationTracker(
     actual val permissionsController: PermissionsController,
+    actual val gpsSensorHelper: GPSSensorHelper,
     interval: Long = 1000,
     priority: Int = LocationRequest.PRIORITY_HIGH_ACCURACY
 ) : LocationCallback() {
@@ -114,6 +115,13 @@ actual class LocationTracker(
     actual suspend fun startTracking() {
         permissionsController.providePermission(Permission.LOCATION)
         // if permissions request failed - execution stops here
+
+        // check if GPS is enabled
+        // if not, try to enable it and return the result
+        if(!gpsSensorHelper.isGPSEnabled()) {
+            // user did not enable GPS
+            return
+        }
 
         isStarted = true
         locationProviderClient?.requestLocationUpdates(locationRequest, this, null)

@@ -1,15 +1,17 @@
 object Deps {
     private const val kotlinVersion = "1.4.21"
 
-    private const val androidAppCompatVersion = "1.1.0"
+    private const val androidAppCompatVersion = "1.2.0"
     private const val materialDesignVersion = "1.0.0"
     private const val androidLifecycleVersion = "2.1.0"
     private const val androidCoreTestingVersion = "2.1.0"
     private const val playServicesLocationVersion = "16.0.0"
+    private const val activityVersion = "1.2.2"
+    private const val fragmentVersion = "1.3.2"
 
     private const val detektVersion = "1.7.4"
 
-    private const val coroutinesVersion = "1.4.2"
+    private const val coroutinesVersion = "1.4.3"
     private const val mokoParcelizeVersion = "0.5.0"
     private const val mokoPermissionsVersion = "0.6.0"
     private const val mokoMvvmVersion = "0.8.1"
@@ -50,6 +52,9 @@ object Deps {
                 "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
             const val playServicesLocation =
                 "com.google.android.gms:play-services-location:$playServicesLocationVersion"
+            const val activity = "androidx.activity:activity-ktx:$activityVersion"
+            const val fragment = "androidx.fragment:fragment:$fragmentVersion"
+            const val lifecycleCommon = "androidx.lifecycle:lifecycle-common-java8:$androidLifecycleVersion"
         }
 
         object MultiPlatform {

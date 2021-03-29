@@ -23,6 +23,17 @@ dependencies {
     androidMainImplementation(Deps.Libs.Android.appCompat)
     androidMainImplementation(Deps.Libs.Android.lifecycle)
     androidMainImplementation(Deps.Libs.Android.playServicesLocation)
+
+    androidMainImplementation(Deps.Libs.Android.activity)
+    androidMainImplementation(Deps.Libs.Android.fragment)
+    androidMainImplementation(Deps.Libs.Android.lifecycleCommon)
+}
+
+android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 publishing {

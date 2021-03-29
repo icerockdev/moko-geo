@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 expect class LocationTracker {
     val permissionsController: PermissionsController
+    val gpsSensorHelper: GPSSensorHelper
 
     suspend fun startTracking() // can be suspended for request permission
     fun stopTracking()

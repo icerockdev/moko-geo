@@ -39,6 +39,11 @@ android {
     packagingOptions {
         exclude("META-INF/*.kotlin_module")
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -46,4 +51,8 @@ dependencies {
     implementation(Deps.Libs.Android.playServicesLocation)
 
     implementation(project(":sample:mpp-library"))
+
+    implementation(Deps.Libs.Android.activity)
+    implementation(Deps.Libs.Android.fragment)
+    implementation(Deps.Libs.Android.lifecycleCommon)
 }
