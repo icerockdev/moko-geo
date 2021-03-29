@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yk9-44-Bpf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yk9-44-Bpf">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,41 +26,56 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cj1-Xj-U8m">
-                                <rect key="frame" x="16" y="36.5" width="288" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cj1-Xj-U8m">
+                                <rect key="frame" x="16" y="65" width="288" height="30"/>
                                 <state key="normal" title="start"/>
                                 <connections>
                                     <action selector="onStartPressed" destination="yk9-44-Bpf" eventType="touchUpInside" id="lju-xA-a1e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-AZ-c87">
-                                <rect key="frame" x="16" y="74.5" width="288" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-AZ-c87">
+                                <rect key="frame" x="16" y="103" width="288" height="30"/>
                                 <state key="normal" title="stop"/>
                                 <connections>
                                     <action selector="onStopPressed" destination="yk9-44-Bpf" eventType="touchUpInside" id="3XJ-75-DqO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SoO-eg-DpT">
+                                <rect key="frame" x="16" y="36.5" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ceD-AZ-c87" firstAttribute="top" secondItem="Cj1-Xj-U8m" secondAttribute="bottom" constant="8" id="8HT-Lf-aBc"/>
                             <constraint firstItem="Mr6-Pm-lXM" firstAttribute="leading" secondItem="zse-rN-qv2" secondAttribute="leadingMargin" id="8gC-OK-JbB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mr6-Pm-lXM" secondAttribute="trailing" id="Cj5-4s-Vz5"/>
                             <constraint firstItem="ceD-AZ-c87" firstAttribute="leading" secondItem="zse-rN-qv2" secondAttribute="leadingMargin" id="Ma0-5e-Obo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ceD-AZ-c87" secondAttribute="trailing" id="R8K-eP-Rj3"/>
+                            <constraint firstItem="SoO-eg-DpT" firstAttribute="top" secondItem="Mr6-Pm-lXM" secondAttribute="bottom" constant="8" id="U2e-rz-1Es"/>
                             <constraint firstItem="Cj1-Xj-U8m" firstAttribute="leading" secondItem="zse-rN-qv2" secondAttribute="leadingMargin" id="Wad-ch-OSk"/>
                             <constraint firstItem="Mr6-Pm-lXM" firstAttribute="top" secondItem="EjS-ay-zmX" secondAttribute="bottom" constant="8" symbolic="YES" id="eOY-q6-JoD"/>
+                            <constraint firstItem="Cj1-Xj-U8m" firstAttribute="top" secondItem="SoO-eg-DpT" secondAttribute="bottom" constant="8" id="jSN-J3-Val"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SoO-eg-DpT" secondAttribute="trailing" id="n7Q-ES-Wce"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cj1-Xj-U8m" secondAttribute="trailing" id="qTQ-db-pH9"/>
-                            <constraint firstItem="Cj1-Xj-U8m" firstAttribute="top" secondItem="Mr6-Pm-lXM" secondAttribute="bottom" constant="8" id="rpY-eN-YwB"/>
+                            <constraint firstItem="SoO-eg-DpT" firstAttribute="leading" secondItem="zse-rN-qv2" secondAttribute="leadingMargin" id="uCq-mX-bbX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="textLabel" destination="Mr6-Pm-lXM" id="s9r-EX-ztn"/>
+                        <outlet property="textExtendedLocationLabel" destination="SoO-eg-DpT" id="huY-2V-dZo"/>
+                        <outlet property="textLocationLabel" destination="Mr6-Pm-lXM" id="s9r-EX-ztn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="454-Cg-jr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5625" y="-845"/>
+            <point key="canvasLocation" x="-5625" y="-845.07042253521126"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

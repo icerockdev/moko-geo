@@ -11,5 +11,6 @@ import platform.darwin.NSObject
 
 internal expect class Tracker(
     locationsChannel: Channel<LatLng>,
+    extendedLocationsChannel: Channel<ExtendedLocation>,
     scope: CoroutineScope
 ) : NSObject, CLLocationManagerDelegateProtocol
