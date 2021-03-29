@@ -39,6 +39,11 @@ android {
     packagingOptions {
         exclude("META-INF/*.kotlin_module")
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -47,8 +52,7 @@ dependencies {
 
     implementation(project(":sample:mpp-library"))
 
-    implementation("androidx.activity:activity-ktx:1.2.0-rc01")
-    implementation("androidx.fragment:fragment:1.3.0-rc01")
-
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.3.0-rc01")
+    implementation(Deps.Libs.Android.activity)
+    implementation(Deps.Libs.Android.fragment)
+    implementation(Deps.Libs.Android.lifecycleCommon)
 }
