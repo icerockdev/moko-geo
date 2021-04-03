@@ -4,13 +4,14 @@
 
 pluginManagement {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
 
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlin") }
-        maven { url = uri("https://kotlin.bintray.com/kotlinx") }
-        maven { url = uri("https://jetbrains.bintray.com/kotlin-native-dependencies") }
-        maven { url = uri("https://maven.fabric.io/public") }
+        jcenter {
+            content {
+                includeGroup("org.jetbrains.trove4j")
+            }
+        }
     }
 }
 
