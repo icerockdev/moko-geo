@@ -16,14 +16,35 @@ import kotlinx.coroutines.launch
 class TrackerViewModel(
     val locationTracker: LocationTracker
 ) : ViewModel() {
-    private val _text: MutableLiveData<String> = MutableLiveData("no data")
-    val text: LiveData<String> = _text.readOnly()
+    private val _textLocation: MutableLiveData<String> = MutableLiveData("no data")
+    val textLocation: LiveData<String> = _textLocation.readOnly()
+
+    private val _textExtendedLocation: MutableLiveData<String> = MutableLiveData("no data")
+    val textExtendedLocation: LiveData<String> = _textExtendedLocation.readOnly()
 
     init {
         viewModelScope.launch {
             locationTracker.getLocationsFlow()
                 .distinctUntilChanged()
-                .collect { _text.value = it.toString() }
+                .collect { _textLocation.value = it.toString() }
+        }
+
+        viewModelScope.launch {
+            locationTracker.getExtendedLocationsFlow()
+                .distinctUntilChanged()
+                .collect {
+                    _textExtendedLocation.value = """
+                        locationAccuracy=${it.location.coordinatesAccuracyMeters}
+                        
+                        ${it.altitude}
+                        
+                        ${it.azimuth}
+                        
+                        ${it.speed}
+                        
+                        timestamp=${it.timestampMs}
+                    """.trimIndent()
+                }
         }
     }
 
@@ -31,8 +52,9 @@ class TrackerViewModel(
         viewModelScope.launch {
             try {
                 locationTracker.startTracking()
-            } catch(exc: Throwable) {
-                _text.value = exc.toString()
+            } catch (exc: Throwable) {
+                _textLocation.value = exc.toString()
+                _textExtendedLocation.value = exc.toString()
             }
         }
     }

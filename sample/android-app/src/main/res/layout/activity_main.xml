@@ -19,7 +19,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.text.ld}" />
+            android:text="@{viewModel.textLocation.ld}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.textExtendedLocation.ld}" />
 
         <Button
             android:layout_width="match_parent"
