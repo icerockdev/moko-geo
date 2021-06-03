@@ -37,6 +37,7 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 ### mavenCentral
 - kotlin 1.4.31
   - 0.3.2
+  - 0.3.3
 
 ## Installation
 root build.gradle  
