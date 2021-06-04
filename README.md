@@ -37,6 +37,7 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 ### mavenCentral
 - kotlin 1.4.31
   - 0.3.2
+  - 0.3.3
 
 ## Installation
 root build.gradle  
@@ -51,7 +52,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:geo:0.3.2")
+    commonMainApi("dev.icerock.moko:geo:0.3.3")
     androidMainImplementation("com.google.android.gms:play-services-location:18.0.0")
 }
 ```

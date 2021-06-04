@@ -11,9 +11,9 @@ object Deps {
 
     private const val coroutinesVersion = "1.4.2"
     private const val mokoParcelizeVersion = "0.6.1"
-    private const val mokoPermissionsVersion = "0.8.0"
+    private const val mokoPermissionsVersion = "0.9.0"
     private const val mokoMvvmVersion = "0.9.2"
-    const val mokoGeoVersion = "0.3.2"
+    const val mokoGeoVersion = "0.3.3"
 
     object Android {
         const val compileSdk = 28
