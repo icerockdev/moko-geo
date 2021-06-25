@@ -1,0 +1,33 @@
+[versions]
+kotlinVersion = "1.5.10"
+androidAppCompatVersion = "1.2.0"
+materialDesignVersion = "1.0.0"
+androidLifecycleVersion = "2.1.0"
+androidCoreTestingVersion = "2.1.0"
+playServicesLocationVersion = "18.0.0"
+detektVersion = "1.15.0"
+coroutinesVersion = "1.4.3"
+mokoParcelizeVersion = "0.7.0"
+mokoPermissionsVersion = "0.10.0"
+mokoMvvmVersion = "0.10.1"
+mokoGeoVersion = "0.4.0"
+mokoGraphicsVersion = "0.7.0"
+mokoResourcesVersion = "0.15.1"
+compileSdk = "28"
+targetSdk = "28"
+minSdk = "16"
+
+[libraries]
+appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
+material = { module = "com.google.android.material:material", version.ref = "materialDesignVersion" }
+lifecycle = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidLifecycleVersion" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
+playServicesLocation = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocationVersion" }
+mokoParcelize = { module = "dev.icerock.moko:parcelize", version.ref = "mokoParcelizeVersion" }
+mokoPermissions = { module = "dev.icerock.moko:permissions", version.ref = "mokoPermissionsVersion" }
+mokoMvvm = { module = "dev.icerock.moko:mvvm", version.ref = "mokoMvvmVersion" }
+mokoGeo = { module = "dev.icerock.moko:geo", version.ref = "mokoGeoVersion" }
+mokoGraphics = { module = "dev.icerock.moko:graphics", version.ref = "mokoGraphicsVersion" }
+mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }
+kotlinTestJUnit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlinVersion" }
+androidCoreTesting = { module = "androidx.arch.core:core-testing", version.ref = "androidCoreTestingVersion" }

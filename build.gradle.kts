@@ -1,27 +1,29 @@
 /*
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
-
-allprojects {
+buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
         google()
-
-        jcenter {
-            content {
-                includeGroup("org.jetbrains.trove4j")
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
+        gradlePluginPortal()
     }
 
-    plugins.withId(Deps.Plugins.androidLibrary.id) {
+    dependencies {
+        classpath("dev.icerock:mobile-multiplatform:0.11.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+        classpath("com.android.tools.build:gradle:4.2.1")
+    }
+}
+allprojects {
+
+    plugins.withId("com.android.library") {
         configure<com.android.build.gradle.LibraryExtension> {
-            compileSdkVersion(Deps.Android.compileSdk)
+            compileSdkVersion(libs.versions.compileSdk.get().toInt())
 
             defaultConfig {
-                minSdkVersion(Deps.Android.minSdk)
-                targetSdkVersion(Deps.Android.targetSdk)
+                minSdkVersion(libs.versions.minSdk.get().toInt())
+                targetSdkVersion(libs.versions.targetSdk.get().toInt())
             }
         }
     }

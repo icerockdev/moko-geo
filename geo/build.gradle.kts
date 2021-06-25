@@ -5,27 +5,27 @@
 import java.util.Base64
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.kotlinKapt)
-    plugin(Deps.Plugins.kotlinAndroidExtensions)
-    plugin(Deps.Plugins.mobileMultiplatform)
-    plugin(Deps.Plugins.mavenPublish)
-    plugin(Deps.Plugins.signing)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("kotlin-kapt")
+    id("kotlin-android-extensions")
+    id("dev.icerock.mobile.multiplatform")
+    id("org.gradle.maven-publish")
+    id("signing")
 }
 
 group = "dev.icerock.moko"
-version = Deps.mokoGeoVersion
+version = libs.versions.mokoGeoVersion.get()
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
+    commonMainImplementation(libs.coroutines)
 
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoParcelize)
-    commonMainImplementation(Deps.Libs.MultiPlatform.mokoPermissions.common)
+    commonMainImplementation(libs.mokoParcelize)
+    commonMainImplementation(libs.mokoPermissions)
 
-    androidMainImplementation(Deps.Libs.Android.appCompat)
-    androidMainImplementation(Deps.Libs.Android.lifecycle)
-    androidMainImplementation(Deps.Libs.Android.playServicesLocation)
+    androidMainImplementation(libs.appCompat)
+    androidMainImplementation(libs.lifecycle)
+    androidMainImplementation(libs.playServicesLocation)
 }
 
 val javadocJar by tasks.registering(Jar::class) {
