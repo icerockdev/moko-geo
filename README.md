@@ -1,5 +1,5 @@
 ![moko-mvvm](https://user-images.githubusercontent.com/5010169/71337878-0e0d0f80-2580-11ea-8ac5-69a132334960.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock.moko/geo) ](https://repo1.maven.org/maven2/dev/icerock/moko/geo) ![kotlin-version](https://img.shields.io/badge/kotlin-1.4.31-orange)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock.moko/geo) ](https://repo1.maven.org/maven2/dev/icerock/moko/geo) ![kotlin-version](https://img.shields.io/badge/kotlin-1.5.10-orange)
 
 # Mobile Kotlin geolocation module
 This is a Kotlin Multiplatform library that provides geolocation to common code.
@@ -23,22 +23,6 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 - Android API 16+
 - iOS version 9.0+
 
-## Versions
-### Bintray
-- kotlin 1.3.61
-  - 0.1.0
-  - 0.1.1
-- kotlin 1.3.70
-  - 0.2.0
-- kotlin 1.4.0
-  - 0.3.0
-- kotlin 1.4.21
-  - 0.3.1
-### mavenCentral
-- kotlin 1.4.31
-  - 0.3.2
-  - 0.3.3
-
 ## Installation
 root build.gradle  
 ```groovy
@@ -52,7 +36,7 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:geo:0.3.3")
+    commonMainApi("dev.icerock.moko:geo:0.4.0")
     androidMainImplementation("com.google.android.gms:play-services-location:18.0.0")
 }
 ```
