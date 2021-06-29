@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("android-app-convention")
     id("kotlin-android")
     id("kotlin-kapt")
 }
