@@ -48,6 +48,7 @@ class TrackerViewModel(
         }
     }
 
+    @Suppress("TooGenericExceptionCaught")
     fun onStartPressed() {
         viewModelScope.launch {
             try {

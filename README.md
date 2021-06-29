@@ -1,5 +1,5 @@
 ![moko-mvvm](https://user-images.githubusercontent.com/5010169/71337878-0e0d0f80-2580-11ea-8ac5-69a132334960.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock.moko/geo) ](https://repo1.maven.org/maven2/dev/icerock/moko/geo) ![kotlin-version](https://img.shields.io/badge/kotlin-1.5.10-orange)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock.moko/geo) ](https://repo1.maven.org/maven2/dev/icerock/moko/geo) ![kotlin-version](https://kotlin-version.aws.icerock.dev/kotlin-version?group=dev.icerock.moko&name=geo)
 
 # Mobile Kotlin geolocation module
 This is a Kotlin Multiplatform library that provides geolocation to common code.
@@ -7,7 +7,6 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 ## Table of Contents
 - [Features](#features)
 - [Requirements](#requirements)
-- [Versions](#versions)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Samples](#samples)

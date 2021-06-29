@@ -12,12 +12,13 @@ dependencyResolutionManagement {
 
         jcenter {
             content {
-                includeGroup("org.jetbrains.trove4j")
                 includeGroup("org.jetbrains.kotlinx")
             }
         }
     }
 }
+
+includeBuild("geo-build-logic")
 
 include(":geo")
 include(":sample:android-app")
