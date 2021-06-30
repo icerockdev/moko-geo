@@ -7,15 +7,12 @@ androidCoreTestingVersion = "2.1.0"
 playServicesLocationVersion = "18.0.0"
 detektVersion = "1.15.0"
 coroutinesVersion = "1.5.0-native-mt"
-mokoParcelizeVersion = "0.7.0"
-mokoPermissionsVersion = "0.10.0"
+mokoParcelizeVersion = "0.7.1"
+mokoPermissionsVersion = "0.10.1"
 mokoMvvmVersion = "0.11.0"
 mokoGeoVersion = "0.4.0"
 mokoGraphicsVersion = "0.7.0"
 mokoResourcesVersion = "0.16.0"
-compileSdk = "28"
-targetSdk = "28"
-minSdk = "16"
 
 [libraries]
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
