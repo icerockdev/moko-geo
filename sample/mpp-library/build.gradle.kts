@@ -19,10 +19,6 @@ dependencies {
     commonMainApi(projects.geo)
     commonMainApi(libs.mokoMvvm)
     commonMainApi(libs.mokoPermissions)
-
-    // temporary fix of https://youtrack.jetbrains.com/issue/KT-41083
-    commonMainImplementation(libs.mokoParcelize)
-    commonMainImplementation(libs.mokoGraphics)
     commonMainApi(libs.mokoResources)
 }
 
