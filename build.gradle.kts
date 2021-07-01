@@ -1,29 +1,21 @@
 /*
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
-
-allprojects {
+buildscript {
     repositories {
         mavenCentral()
         google()
-
-        jcenter {
-            content {
-                includeGroup("org.jetbrains.trove4j")
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
+        gradlePluginPortal()
     }
 
-    plugins.withId(Deps.Plugins.androidLibrary.id) {
-        configure<com.android.build.gradle.LibraryExtension> {
-            compileSdkVersion(Deps.Android.compileSdk)
-
-            defaultConfig {
-                minSdkVersion(Deps.Android.minSdk)
-                targetSdkVersion(Deps.Android.targetSdk)
-            }
-        }
+    dependencies {
+        classpath(":geo-build-logic")
+    }
+}
+allprojects {
+    plugins.withId("org.gradle.maven-publish") {
+        group = "dev.icerock.moko"
+        version = libs.versions.mokoGeoVersion.get()
     }
 }
 

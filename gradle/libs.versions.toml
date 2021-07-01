@@ -1,0 +1,20 @@
+[versions]
+androidAppCompatVersion = "1.2.0"
+androidLifecycleVersion = "2.1.0"
+playServicesLocationVersion = "18.0.0"
+coroutinesVersion = "1.5.0-native-mt"
+mokoParcelizeVersion = "0.7.1"
+mokoPermissionsVersion = "0.10.1"
+mokoMvvmVersion = "0.11.0"
+mokoGeoVersion = "0.4.0"
+mokoResourcesVersion = "0.16.1"
+
+[libraries]
+appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
+lifecycle = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidLifecycleVersion" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
+playServicesLocation = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocationVersion" }
+mokoParcelize = { module = "dev.icerock.moko:parcelize", version.ref = "mokoParcelizeVersion" }
+mokoPermissions = { module = "dev.icerock.moko:permissions", version.ref = "mokoPermissionsVersion" }
+mokoMvvm = { module = "dev.icerock.moko:mvvm", version.ref = "mokoMvvmVersion" }
+mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }
