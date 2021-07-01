@@ -1,27 +1,28 @@
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.mobileMultiplatform)
-    plugin(Deps.Plugins.iosFramework)
+    id("com.android.library")
+    id("android-base-convention")
+    id("detekt-convention")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("dev.icerock.mobile.multiplatform.android-manifest")
+    id("dev.icerock.mobile.multiplatform.ios-framework")
+}
+
+kotlin {
+    android()
+    ios()
 }
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.coroutines)
-
-    androidMainImplementation(Deps.Libs.Android.lifecycle)
-    androidMainImplementation(Deps.Libs.Android.playServicesLocation)
-
-    commonMainApi(Deps.Libs.MultiPlatform.mokoGeo)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoMvvm)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoPermissions.common)
-
-    // temporary fix of https://youtrack.jetbrains.com/issue/KT-41083
-    commonMainImplementation("dev.icerock.moko:parcelize:0.4.0")
-    commonMainImplementation("dev.icerock.moko:graphics:0.4.0")
-    commonMainApi("dev.icerock.moko:resources:0.13.0")
+    commonMainImplementation(libs.coroutines)
+    "androidMainImplementation"(libs.lifecycle)
+    "androidMainImplementation"(libs.playServicesLocation)
+    commonMainApi(projects.geo)
+    commonMainApi(libs.mokoMvvm)
+    commonMainApi(libs.mokoPermissions)
+    commonMainApi(libs.mokoResources)
 }
 
 framework {
-    export(project(":geo"))
-    export(Deps.Libs.MultiPlatform.mokoPermissions)
+    export(projects.geo)
+    export(libs.mokoPermissions)
 }
