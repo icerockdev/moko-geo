@@ -12,7 +12,7 @@ mokoPermissionsVersion = "0.10.1"
 mokoMvvmVersion = "0.11.0"
 mokoGeoVersion = "0.4.0"
 mokoGraphicsVersion = "0.7.0"
-mokoResourcesVersion = "0.16.0"
+mokoResourcesVersion = "0.16.1"
 
 [libraries]
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
