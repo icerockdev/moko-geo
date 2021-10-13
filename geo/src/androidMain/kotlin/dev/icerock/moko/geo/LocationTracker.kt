@@ -36,8 +36,8 @@ actual class LocationTracker(
         it.interval = interval
         it.priority = priority
     }
-    private val locationsChannel = Channel<LatLng>(Channel.BUFFERED)
-    private val extendedLocationsChannel = Channel<ExtendedLocation>(Channel.BUFFERED)
+    private val locationsChannel = Channel<LatLng>(Channel.CONFLATED)
+    private val extendedLocationsChannel = Channel<ExtendedLocation>(Channel.CONFLATED)
     private val trackerScope = CoroutineScope(Dispatchers.Main)
 
     fun bind(lifecycle: Lifecycle, context: Context, fragmentManager: FragmentManager) {
