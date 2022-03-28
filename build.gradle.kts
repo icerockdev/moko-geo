@@ -9,7 +9,12 @@ buildscript {
     }
 
     dependencies {
-        classpath(":geo-build-logic")
+        classpath(libs.kotlinGradlePlugin)
+        classpath(libs.androidGradlePlugin)
+        classpath(libs.googleServicesGradlePlugin)
+        classpath(libs.mokoGradlePlugin)
+        classpath(libs.mobileMultiplatformGradlePlugin)
+        classpath(libs.kotlinSerializationGradlePlugin)
     }
 }
 allprojects {

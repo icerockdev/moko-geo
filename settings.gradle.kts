@@ -8,6 +8,8 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
+        mavenLocal()
+
         google()
 
         jcenter {
@@ -17,8 +19,6 @@ dependencyResolutionManagement {
         }
     }
 }
-
-includeBuild("geo-build-logic")
 
 include(":geo")
 include(":sample:android-app")

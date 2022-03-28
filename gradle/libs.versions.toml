@@ -1,13 +1,14 @@
 [versions]
+kotlinVersion = "1.6.10"
 androidAppCompatVersion = "1.2.0"
 androidLifecycleVersion = "2.1.0"
 playServicesLocationVersion = "18.0.0"
-coroutinesVersion = "1.5.0-native-mt"
-mokoParcelizeVersion = "0.7.1"
-mokoPermissionsVersion = "0.10.1"
-mokoMvvmVersion = "0.11.0"
-mokoGeoVersion = "0.4.0"
-mokoResourcesVersion = "0.16.1"
+coroutinesVersion = "1.6.0-native-mt"
+mokoParcelizeVersion = "0.8.0"
+mokoPermissionsVersion = "0.11.0"
+mokoMvvmVersion = "0.12.0"
+mokoGeoVersion = "0.5.0"
+mokoResourcesVersion = "0.18.0"
 
 [libraries]
 appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
@@ -16,5 +17,16 @@ coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version
 playServicesLocation = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocationVersion" }
 mokoParcelize = { module = "dev.icerock.moko:parcelize", version.ref = "mokoParcelizeVersion" }
 mokoPermissions = { module = "dev.icerock.moko:permissions", version.ref = "mokoPermissionsVersion" }
-mokoMvvm = { module = "dev.icerock.moko:mvvm", version.ref = "mokoMvvmVersion" }
+mokoMvvm = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmVersion" }
+mokoMvvmLivedata = { module = "dev.icerock.moko:mvvm-livedata", version.ref = "mokoMvvmVersion" }
+mokoMvvmDatabinding = { module = "dev.icerock.moko:mvvm-databinding", version.ref = "mokoMvvmVersion" }
 mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }
+
+
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }
+androidGradlePlugin = { module = "com.android.tools.build:gradle", version = "7.0.4" }
+googleServicesGradlePlugin = { module = "com.google.gms:google-services", version = "4.3.8" }
+firebaseGradlePlugin = { module = "com.google.firebase:firebase-crashlytics-gradle", version = "2.2.0" }
+mokoGradlePlugin = { module = "dev.icerock.moko:moko-gradle-plugin", version = "0.1.0" }
+mobileMultiplatformGradlePlugin = { module = "dev.icerock:mobile-multiplatform", version = "0.14.1" }
+kotlinSerializationGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinVersion" }

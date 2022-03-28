@@ -3,14 +3,13 @@
  */
 
 plugins {
-    id("multiplatform-library-convention")
-    id("kotlin-parcelize")
+    id("dev.icerock.moko.gradle.multiplatform.mobile")
+    id("dev.icerock.moko.gradle.publication")
+    id("dev.icerock.moko.gradle.stub.javadoc")
+    id("dev.icerock.moko.gradle.detekt")
     id("dev.icerock.mobile.multiplatform.android-manifest")
-    id("publication-convention")
+    id("kotlin-parcelize")
 }
-
-group = "dev.icerock.moko"
-version = libs.versions.mokoGeoVersion.get()
 
 dependencies {
     commonMainImplementation(libs.coroutines)
@@ -18,8 +17,8 @@ dependencies {
     commonMainImplementation(libs.mokoParcelize)
     commonMainImplementation(libs.mokoPermissions)
 
-    "androidMainImplementation"(libs.appCompat)
-    "androidMainImplementation"(libs.lifecycle)
-    "androidMainImplementation"(libs.playServicesLocation)
+    androidMainImplementation(libs.appCompat)
+    androidMainImplementation(libs.lifecycle)
+    androidMainImplementation(libs.playServicesLocation)
 }
 
