@@ -1,6 +1,6 @@
 plugins {
-    id("android-app-convention")
-    id("kotlin-android")
+    id("dev.icerock.moko.gradle.android.application")
+    id("dev.icerock.moko.gradle.detekt")
     id("kotlin-kapt")
 }
 
@@ -19,6 +19,7 @@ android {
 dependencies {
     implementation(libs.appCompat)
     implementation(libs.playServicesLocation)
+    implementation(libs.mokoMvvmDatabinding)
 
     implementation(projects.sample.mppLibrary)
 }
