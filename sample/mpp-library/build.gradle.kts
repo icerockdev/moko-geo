@@ -1,10 +1,7 @@
 plugins {
-    id("com.android.library")
-    id("dev.icerock.moko.gradle.android.base")
-    id("dev.icerock.moko.gradle.detekt")
     id("dev.icerock.moko.gradle.multiplatform.mobile")
-    id("dev.icerock.mobile.multiplatform.android-manifest")
     id("dev.icerock.mobile.multiplatform.ios-framework")
+    id("dev.icerock.moko.gradle.detekt")
 }
 
 dependencies {
@@ -14,9 +11,8 @@ dependencies {
     androidMainImplementation(libs.playServicesLocation)
 
     commonMainApi(projects.geo)
-    commonMainApi(libs.mokoMvvm)
+    commonMainApi(libs.mokoMvvmCore)
     androidMainApi(libs.mokoMvvmLivedata)
-    androidMainApi(libs.mokoMvvmDatabinding)
     commonMainApi(libs.mokoPermissions)
     commonMainApi(libs.mokoResources)
 }

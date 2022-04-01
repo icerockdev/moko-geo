@@ -17,7 +17,7 @@ coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version
 playServicesLocation = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocationVersion" }
 mokoParcelize = { module = "dev.icerock.moko:parcelize", version.ref = "mokoParcelizeVersion" }
 mokoPermissions = { module = "dev.icerock.moko:permissions", version.ref = "mokoPermissionsVersion" }
-mokoMvvm = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmVersion" }
+mokoMvvmCore = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmVersion" }
 mokoMvvmLivedata = { module = "dev.icerock.moko:mvvm-livedata", version.ref = "mokoMvvmVersion" }
 mokoMvvmDatabinding = { module = "dev.icerock.moko:mvvm-databinding", version.ref = "mokoMvvmVersion" }
 mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }
