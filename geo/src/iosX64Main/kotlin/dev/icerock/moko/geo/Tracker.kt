@@ -17,6 +17,7 @@ import platform.Foundation.timeIntervalSince1970
 import platform.UIKit.UIDevice
 import platform.darwin.NSObject
 import kotlin.native.ref.WeakReference
+import kotlin.time.Duration.Companion.seconds
 
 internal actual class Tracker actual constructor(
     locationsChannel: Channel<LatLng>,
@@ -27,6 +28,7 @@ internal actual class Tracker actual constructor(
     private val locationsChannel = WeakReference(locationsChannel)
     private val extendedLocationsChannel = WeakReference(extendedLocationsChannel)
 
+    @Suppress("ReturnCount")
     override fun locationManager(manager: CLLocationManager, didUpdateLocations: List<*>) {
         val locations = didUpdateLocations as List<CLLocation>
         val trackerScope = coroutineScope.get() ?: return
@@ -34,8 +36,9 @@ internal actual class Tracker actual constructor(
         val extendedLocationsChannel = extendedLocationsChannel.get() ?: return
 
         locations.forEach { location ->
-            val courseAccuracy = if (UIDevice.currentDevice.systemVersion.compareTo("13.4") < 0) null
-            else location.courseAccuracy
+            val courseAccuracy =
+                if (UIDevice.currentDevice.systemVersion.compareTo("13.4") < 0) null
+                else location.courseAccuracy
 
             val latLng = location.coordinate().useContents {
                 LatLng(
@@ -69,7 +72,8 @@ internal actual class Tracker actual constructor(
                 azimuth = azimuth,
                 speed = speed,
                 altitude = altitude,
-                timestampMs = location.timestamp.timeIntervalSince1970.toLong() * 1000
+                timestampMs = location.timestamp.timeIntervalSince1970.toLong()
+                    .seconds.inWholeMilliseconds
             )
 
             trackerScope.launch {

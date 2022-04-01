@@ -2,18 +2,27 @@
  * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
+@file:Suppress("Indentation")
+
 package dev.icerock.moko.geo
 
 import dev.icerock.moko.parcelize.Parcelable
 import dev.icerock.moko.parcelize.Parcelize
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.asin
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.round
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 @Parcelize
 data class LatLng(
-    val latitude: Double, 
+    val latitude: Double,
     val longitude: Double
 ) : Parcelable {
 
+    @Suppress("Indentation", "MagicNumber")
     fun distanceTo(latLng: LatLng): Double {
         val lat1 = latitude
         val lon1 = longitude
@@ -29,6 +38,7 @@ data class LatLng(
         return r * c
     }
 
+    @Suppress("Indentation", "MagicNumber")
     fun getAngleTo(latLng: LatLng, rounded: Boolean = true): Double {
         val lat1 = toRadians(this.latitude)
         val lat2 = toRadians(latLng.latitude)
@@ -55,10 +65,12 @@ data class LatLng(
         return angle
     }
 
+    @Suppress("MagicNumber")
     private fun toRadians(angle: Double): Double {
         return angle * PI / 180.0
     }
 
+    @Suppress("MagicNumber")
     private fun toDegree(angle: Double): Double {
         return angle * 180.0 / PI
     }

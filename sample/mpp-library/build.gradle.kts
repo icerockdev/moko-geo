@@ -12,7 +12,7 @@ dependencies {
 
     commonMainApi(projects.geo)
     commonMainApi(libs.mokoMvvmCore)
-    androidMainApi(libs.mokoMvvmLivedata)
+    commonMainApi(libs.mokoMvvmLivedata)
     commonMainApi(libs.mokoPermissions)
     commonMainApi(libs.mokoResources)
 }
