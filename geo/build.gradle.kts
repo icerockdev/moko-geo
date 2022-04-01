@@ -13,11 +13,11 @@ plugins {
 dependencies {
     commonMainImplementation(libs.coroutines)
 
-    commonMainImplementation(libs.mokoParcelize)
-    commonMainImplementation(libs.mokoPermissions)
+    commonMainApi(libs.mokoParcelize)
+    commonMainApi(libs.mokoPermissions)
 
     androidMainImplementation(libs.appCompat)
-    androidMainImplementation(libs.lifecycle)
-    androidMainImplementation(libs.playServicesLocation)
+    androidMainApi(libs.lifecycle)
+    androidMainApi(libs.playServicesLocation)
 }
 

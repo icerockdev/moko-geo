@@ -17,11 +17,12 @@ buildscript {
         classpath(libs.kotlinSerializationGradlePlugin)
     }
 }
+
+apply(plugin = "dev.icerock.moko.gradle.publication.nexus")
+val mokoVersion = libs.versions.mokoGeoVersion.get()
 allprojects {
-    plugins.withId("org.gradle.maven-publish") {
-        group = "dev.icerock.moko"
-        version = libs.versions.mokoGeoVersion.get()
-    }
+    group = "dev.icerock.moko"
+    version = mokoVersion
 }
 
 tasks.register("clean", Delete::class).configure {
