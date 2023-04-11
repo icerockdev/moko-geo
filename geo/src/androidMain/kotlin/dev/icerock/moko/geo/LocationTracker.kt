@@ -15,6 +15,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import dev.icerock.moko.permissions.Permission
 import dev.icerock.moko.permissions.PermissionsController
 import kotlinx.coroutines.CoroutineScope
@@ -44,7 +45,7 @@ actual class LocationTracker(
     fun bind(lifecycle: Lifecycle, context: Context, fragmentManager: FragmentManager) {
         permissionsController.bind(lifecycle, fragmentManager)
 
-        locationProviderClient = FusedLocationProviderClient(context)
+        locationProviderClient = LocationServices.getFusedLocationProviderClient(context)
 
         @SuppressLint("MissingPermission")
         if (isStarted) {
@@ -63,7 +64,7 @@ actual class LocationTracker(
     override fun onLocationResult(locationResult: LocationResult) {
         super.onLocationResult(locationResult)
 
-        val lastLocation = locationResult.lastLocation
+        val lastLocation = locationResult.lastLocation ?: return
 
         val speedAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) null
         else lastLocation.speedAccuracyMetersPerSecond.toDouble()
