@@ -15,6 +15,8 @@ buildscript {
         classpath(libs.mokoGradlePlugin)
         classpath(libs.mobileMultiplatformGradlePlugin)
         classpath(libs.kotlinSerializationGradlePlugin)
+        classpath(libs.composeJetBrainsGradlePlugin)
+        classpath(libs.detektGradlePlugin)
     }
 }
 
