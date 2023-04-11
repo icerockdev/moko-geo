@@ -16,6 +16,7 @@ This is a Kotlin Multiplatform library that provides geolocation to common code.
 
 ## Features
 - **Geolocation tracking** - track user geolocation from common code;
+- **Compose Multiplatform** support;
 
 ## Requirements
 - Gradle version 6.0+
@@ -35,7 +36,10 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:geo:0.5.0")
+    commonMainApi("dev.icerock.moko:geo:0.6.0")
+
+    // Compose Multiplatform
+    commonMainApi("dev.icerock.moko:geo-compose:0.6.0")
 }
 ```
 

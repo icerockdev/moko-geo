@@ -13,5 +13,6 @@ dependencyResolutionManagement {
 }
 
 include(":geo")
+include(":geo-compose")
 include(":sample:android-app")
 include(":sample:mpp-library")

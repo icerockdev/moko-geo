@@ -7,6 +7,7 @@ package dev.icerock.moko.geo
 import dev.icerock.moko.permissions.Permission
 import dev.icerock.moko.permissions.PermissionsController
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -23,7 +24,7 @@ actual class LocationTracker(
 ) {
     private val locationsChannel = Channel<LatLng>(Channel.BUFFERED)
     private val extendedLocationsChannel = Channel<ExtendedLocation>(Channel.BUFFERED)
-    private val trackerScope = CoroutineScope(UIDispatcher())
+    private val trackerScope = CoroutineScope(Dispatchers.Main)
     private val tracker = Tracker(
         locationsChannel = locationsChannel,
         extendedLocationsChannel = extendedLocationsChannel,
