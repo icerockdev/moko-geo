@@ -115,8 +115,12 @@ actual class LocationTracker(
     }
 
     @SuppressLint("MissingPermission")
-    actual suspend fun startTracking() {
-        permissionsController.providePermission(Permission.LOCATION)
+    actual suspend fun startTracking(allowCoarseLocation: Boolean) {
+        val permission = when {
+            allowCoarseLocation -> Permission.COARSE_LOCATION
+            else -> Permission.LOCATION
+        }
+        permissionsController.providePermission(permission)
         // if permissions request failed - execution stops here
 
         isStarted = true
