@@ -105,7 +105,8 @@ actual class LocationTracker(
             azimuth = azimuth,
             speed = speed,
             altitude = altitude,
-            timestampMs = lastLocation.time
+            timestampMs = lastLocation.time,
+            isMock = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) lastLocation.isMock else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) lastLocation.isFromMockProvider else null
         )
 
         trackerScope.launch {
