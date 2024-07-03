@@ -4,6 +4,23 @@ plugins {
     id("dev.icerock.moko.gradle.detekt")
 }
 
+android {
+    compileOptions {
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
+    }
+}
+
+kotlin {
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = JavaVersion.VERSION_17.majorVersion
+            }
+        }
+    }
+}
+
 dependencies {
     commonMainImplementation(libs.coroutines)
 
