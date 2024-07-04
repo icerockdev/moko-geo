@@ -5,6 +5,8 @@ plugins {
 }
 
 android {
+    namespace = "com.icerockdev.app"
+
     buildFeatures.dataBinding = true
 
     defaultConfig {
