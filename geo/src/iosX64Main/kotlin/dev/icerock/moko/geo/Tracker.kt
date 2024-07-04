@@ -4,6 +4,7 @@
 
 package dev.icerock.moko.geo
 
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.useContents
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
@@ -16,9 +17,11 @@ import platform.Foundation.NSLog
 import platform.Foundation.timeIntervalSince1970
 import platform.UIKit.UIDevice
 import platform.darwin.NSObject
+import kotlin.experimental.ExperimentalNativeApi
 import kotlin.native.ref.WeakReference
 import kotlin.time.Duration.Companion.seconds
 
+@OptIn(ExperimentalNativeApi::class, ExperimentalForeignApi::class)
 internal actual class Tracker actual constructor(
     locationsChannel: Channel<LatLng>,
     extendedLocationsChannel: Channel<ExtendedLocation>,
