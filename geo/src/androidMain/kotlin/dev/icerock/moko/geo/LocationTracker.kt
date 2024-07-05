@@ -66,14 +66,23 @@ actual class LocationTracker(
 
         val lastLocation = locationResult.lastLocation ?: return
 
-        val speedAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) null
-        else lastLocation.speedAccuracyMetersPerSecond.toDouble()
+        val speedAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            null
+        } else {
+            lastLocation.speedAccuracyMetersPerSecond.toDouble()
+        }
 
-        val bearingAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) null
-        else lastLocation.bearingAccuracyDegrees.toDouble()
+        val bearingAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            null
+        } else {
+            lastLocation.bearingAccuracyDegrees.toDouble()
+        }
 
-        val verticalAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) null
-        else lastLocation.verticalAccuracyMeters.toDouble()
+        val verticalAccuracy = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            null
+        } else {
+            lastLocation.verticalAccuracyMeters.toDouble()
+        }
 
         val latLng = LatLng(
             lastLocation.latitude,

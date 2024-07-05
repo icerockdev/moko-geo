@@ -40,8 +40,11 @@ internal actual class Tracker actual constructor(
 
         locations.forEach { location ->
             val courseAccuracy =
-                if (UIDevice.currentDevice.systemVersion.compareTo("13.4") < 0) null
-                else location.courseAccuracy
+                if (UIDevice.currentDevice.systemVersion.compareTo("13.4") < 0) {
+                    null
+                } else {
+                    location.courseAccuracy
+                }
 
             val latLng = location.coordinate().useContents {
                 LatLng(
