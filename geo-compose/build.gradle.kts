@@ -14,7 +14,7 @@ android {
     namespace = "dev.icerock.moko.geo.compose"
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 24
     }
 
     compileOptions {
