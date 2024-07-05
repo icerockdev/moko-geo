@@ -5,9 +5,8 @@
 package dev.icerock.moko.geo
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
-import androidx.fragment.app.FragmentManager
+import androidx.activity.ComponentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -30,7 +29,7 @@ import kotlinx.coroutines.launch
 actual class LocationTracker(
     actual val permissionsController: PermissionsController,
     interval: Long = 1000,
-    priority: Int = LocationRequest.PRIORITY_HIGH_ACCURACY
+    priority: Int = LocationRequest.PRIORITY_HIGH_ACCURACY,
 ) : LocationCallback() {
     private var locationProviderClient: FusedLocationProviderClient? = null
     private var isStarted: Boolean = false
@@ -42,17 +41,17 @@ actual class LocationTracker(
     private val extendedLocationsChannel = Channel<ExtendedLocation>(Channel.CONFLATED)
     private val trackerScope = CoroutineScope(Dispatchers.Main)
 
-    fun bind(lifecycle: Lifecycle, context: Context, fragmentManager: FragmentManager) {
-        permissionsController.bind(lifecycle, fragmentManager)
+    fun bind(activity: ComponentActivity) {
+        permissionsController.bind(activity)
 
-        locationProviderClient = LocationServices.getFusedLocationProviderClient(context)
+        locationProviderClient = LocationServices.getFusedLocationProviderClient(activity)
 
         @SuppressLint("MissingPermission")
         if (isStarted) {
             locationProviderClient?.requestLocationUpdates(locationRequest, this, null)
         }
 
-        lifecycle.addObserver(object : LifecycleObserver {
+        activity.lifecycle.addObserver(object : LifecycleObserver {
             @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
             fun onDestroy() {
                 locationProviderClient?.removeLocationUpdates(this@LocationTracker)
