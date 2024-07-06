@@ -15,6 +15,8 @@ android {
 
         versionCode = 1
         versionName = "0.1.0"
+
+        minSdk = 24
     }
 
     compileOptions {
