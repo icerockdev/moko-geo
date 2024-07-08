@@ -17,8 +17,8 @@ jobs:
         with:
           java-version: 17
       - name: Check runtime
-        run: ./gradlew build publishToMavenLocal syncMultiPlatformLibraryDebugFrameworkIosX64
+        run: ./gradlew build publishToMavenLocal syncMultiPlatformLibraryDebugFrameworkIosSimulatorArm64
       - name: Install pods
         run: cd sample/ios-app && pod install
       - name: build ios sample
-        run: cd sample/ios-app && set -o pipefail && xcodebuild -scheme TestProj -workspace TestProj.xcworkspace -configuration Debug -sdk iphonesimulator -arch x86_64 build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO | xcpretty
+        run: cd sample/ios-app && set -o pipefail && xcodebuild -scheme TestProj -workspace TestProj.xcworkspace -configuration Debug -sdk iphonesimulator -arch arm64 build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO | xcpretty
