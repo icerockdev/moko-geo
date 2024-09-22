@@ -5,6 +5,8 @@ plugins {
 }
 
 android {
+    namespace = "com.icerockdev.app"
+
     buildFeatures.dataBinding = true
 
     defaultConfig {
@@ -13,6 +15,17 @@ android {
 
         versionCode = 1
         versionName = "0.1.0"
+
+        minSdk = 24
+    }
+
+    compileOptions {
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.majorVersion
     }
 }
 

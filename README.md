@@ -36,10 +36,10 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:geo:0.6.0")
+    commonMainApi("dev.icerock.moko:geo:0.7.0")
 
     // Compose Multiplatform
-    commonMainApi("dev.icerock.moko:geo-compose:0.6.0")
+    commonMainApi("dev.icerock.moko:geo-compose:0.7.0")
 }
 ```
 
@@ -103,6 +103,10 @@ All development (both new features and bug fixes) is performed in the `develop` 
 The `develop` branch is pushed to `master` on release.
 
 For more details on contributing please see the [contributing guide](CONTRIBUTING.md).
+
+Before send PR please run checks on local:
+- `./local-check.sh` in root of repository
+- `./local-check.sh` in `sample` directory
 
 ## License
         
