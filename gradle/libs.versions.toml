@@ -8,7 +8,7 @@ composeJetBrainsVersion = "1.6.11"
 mokoParcelizeVersion = "0.9.0"
 mokoPermissionsVersion = "0.18.0"
 mokoMvvmVersion = "0.16.1"
-mokoGeoVersion = "0.6.0"
+mokoGeoVersion = "0.7.0"
 mokoResourcesVersion = "0.24.1"
 
 [libraries]
