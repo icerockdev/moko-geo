@@ -30,6 +30,6 @@ class MainActivity : MvvmActivity<ActivityMainBinding, TrackerViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.locationTracker.bind(lifecycle, this, supportFragmentManager)
+        viewModel.locationTracker.bind(activity = this)
     }
 }

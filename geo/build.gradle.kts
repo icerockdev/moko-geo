@@ -10,6 +10,25 @@ plugins {
     id("kotlin-parcelize")
 }
 
+android {
+    namespace = "dev.icerock.moko.geo"
+
+    compileOptions {
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
+    }
+}
+
+kotlin {
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = JavaVersion.VERSION_17.majorVersion
+            }
+        }
+    }
+}
+
 dependencies {
     commonMainImplementation(libs.coroutines)
 
