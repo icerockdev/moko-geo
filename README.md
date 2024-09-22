@@ -104,6 +104,10 @@ The `develop` branch is pushed to `master` on release.
 
 For more details on contributing please see the [contributing guide](CONTRIBUTING.md).
 
+Before send PR please run checks on local:
+- `./local-check.sh` in root of repository
+- `./local-check.sh` in `sample` directory
+
 ## License
         
     Copyright 2019 IceRock MAG Inc.

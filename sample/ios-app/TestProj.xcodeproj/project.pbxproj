@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -273,6 +273,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VU932NX78;
 				INFOPLIST_FILE = src/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.icerock.moko.sample.geo;
 				PRODUCT_NAME = "moko-geo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -291,6 +292,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VU932NX78;
 				INFOPLIST_FILE = src/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.icerock.moko.sample.geo;
 				PRODUCT_NAME = "moko-geo";
 				PROVISIONING_PROFILE_SPECIFIER = "";

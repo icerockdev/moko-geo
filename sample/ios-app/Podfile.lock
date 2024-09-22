@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../mpp-library"
 
 SPEC CHECKSUMS:
-  MultiPlatformLibrary: bcc3cf3919bec45c134090b11abd072e73e82e37
+  MultiPlatformLibrary: e90154651f2068415822dc37193df246c92e7b2a
 
 PODFILE CHECKSUM: f02f071e13bda07c0fef717fc00fab294cd42253
 
