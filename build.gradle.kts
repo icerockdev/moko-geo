@@ -25,6 +25,12 @@ val mokoVersion = libs.versions.mokoGeoVersion.get()
 allprojects {
     group = "dev.icerock.moko"
     version = mokoVersion
+
+    // fix Reason: Task ':graphics:publishJsPublicationToOSSRHRepository' uses this output of task ':graphics:signAndroidDebugPublication' without declaring an explicit or implicit dependency. This can lead to incorrect results being produced, depending on what order the tasks are executed.
+    val signingTasks = tasks.withType<Sign>()
+    tasks.withType<AbstractPublishToMaven>().configureEach {
+        dependsOn(signingTasks)
+    }
 }
 
 tasks.register("clean", Delete::class).configure {
