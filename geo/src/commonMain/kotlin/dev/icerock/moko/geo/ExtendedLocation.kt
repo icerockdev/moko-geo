@@ -13,5 +13,6 @@ data class ExtendedLocation(
     val azimuth: Azimuth,
     val speed: Speed,
     val altitude: Altitude,
-    val timestampMs: Long
+    val timestampMs: Long,
+    val isMock:Boolean? = null
 ) : Parcelable
