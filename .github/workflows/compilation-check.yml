@@ -19,4 +19,4 @@ jobs:
       - name: Check runtime
         run: ./local-check.sh
       - name: Check sample
-        run: cd sample/ios-app && ./local-check.sh
+        run: cd sample && ./local-check.sh
