@@ -36,10 +36,10 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:geo:0.7.0")
+    commonMainApi("dev.icerock.moko:geo:0.8.0")
 
     // Compose Multiplatform
-    commonMainApi("dev.icerock.moko:geo-compose:0.7.0")
+    commonMainApi("dev.icerock.moko:geo-compose:0.8.0")
 }
 ```
 

@@ -34,6 +34,7 @@ dependencies {
 
     commonMainApi(libs.mokoParcelize)
     commonMainApi(libs.mokoPermissions)
+    commonMainApi(libs.mokoPermissionsLocation)
 
     androidMainImplementation(libs.appCompat)
     androidMainApi(libs.lifecycle)
