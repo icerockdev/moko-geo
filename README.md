@@ -80,6 +80,18 @@ val viewModel = TrackerViewModel(locationTracker)
 viewModel.locationTracker.bind(lifecycle, this, supportFragmentManager)
 ```
 
+In Android jetpack compose:
+```kotlin
+// create ViewModel
+val locationTracker = LocationTracker(
+    permissionsController = PermissionsController(applicationContext = applicationContext)
+)
+val viewModel = TrackerViewModel(locationTracker)
+
+// bind tracker to composable
+BindLocationTrackerEffect(locationTracker = tracker)
+```
+
 In iOS:
 ```swift
 let viewModel = TrackerViewModel(
