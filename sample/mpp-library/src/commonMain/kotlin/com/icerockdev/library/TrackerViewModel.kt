@@ -41,6 +41,8 @@ class TrackerViewModel(
                         
                         ${it.speed}
                         
+                        ${it.isMock}
+                        
                         timestamp=${it.timestampMs}
                     """.trimIndent()
                 }
